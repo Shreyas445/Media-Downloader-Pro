@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Downloader Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <h1>Media Downloader Pro</h1>
+        </div>
+
+        <div class="card">
+            <div class="input-group">
+                <input type="text" id="urlInput" placeholder="Paste YouTube link here..." autocomplete="off">
+                <button id="fetchBtn" class="btn-primary" onclick="fetchInfo()">
+                    <span class="btn-text">Analyze</span>
+                    <div class="spinner" id="fetchSpinner"></div>
+                </button>
+            </div>
+            
+            <div class="settings-group">
+                <div class="folder-picker">
+                    <label>Save to:</label>
+                    <div class="folder-display">
+                        <span id="folderPathText">Default (Downloads Folder)</span>
+                        <button class="btn-secondary" onclick="chooseFolder()">Browse</button>
+                    </div>
+                </div>
+                
+                <label class="toggle-container">
+                    <input type="checkbox" id="splitChapters">
+                    <span class="toggle-switch"></span>
+                    Split into audio chapters
+                </label>
+            </div>
+        </div>
+
+        <div id="resultsArea" style="display: none;">
+            <div class="tabs" id="tabsGroup">
+                <button class="tab active" onclick="switchTab('video')">MP4 Video</button>
+                <button class="tab" onclick="switchTab('audio')">MP3 Audio</button>
+            </div>
+
+            <div class="content-area card">
+                <div id="videoFormats" class="format-list" style="display: none;"></div>
+                <div id="audioFormats" class="format-list" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <div class="download-status card" id="downloadStatus" style="display: none;">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+            <div class="status-text" id="statusText">Downloading: 0%</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

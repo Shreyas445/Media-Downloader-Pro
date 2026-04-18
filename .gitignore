@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyInstaller folders & files
+build/
+dist/
+*.spec
+
+# Application Logs
+*.log
+build_log.txt
+
+# Media Output (Downloads)
+downloads/
+*.mp4
+*.mp3
+
+# Generated Windows Icons (The source icon.png is tracked, but icon.ico is generated)
+icon.ico
+
+# IDEs
+.vscode/
+.idea/
+*.swp
