@@ -1,57 +1,86 @@
 <div align="center">
     <img src="icon.png" width="128" height="128" alt="Media Downloader Pro Logo" />
     <h1>Media Downloader Pro</h1>
-    <p>A native, high-performance web-scraper and media extraction tool wrapped in a stunning PyWebView Glassmorphism UI.</p>
+    <p>Download YouTube videos, MP3 audio, and Instagram reels — all from one beautiful desktop app.</p>
 </div>
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python Version](https://img.shields.io/badge/python-3.10%2B-brightgreen.svg)
 ![Framework](https://img.shields.io/badge/framework-PyWebView-orange.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-purple.svg)
 
 ## 🔮 Overview
 
-**Media Downloader Pro** solves the problem of unreliable command-line downloaders by wrapping the immensely powerful `yt-dlp` engine inside a beautiful, intuitive desktop application. Through a custom-built API linking Python and JavaScript, users can instantly analyze YouTube layouts and fetch localized formats—without wrestling with the terminal.
+**Media Downloader Pro** is a sleek Windows desktop application that wraps the powerful `yt-dlp` engine inside a gorgeous glassmorphism UI. Download YouTube videos in up to 4K, extract MP3 audio at any bitrate, and grab Instagram reels/posts — all without touching the terminal.
 
 ## ✨ Features
 
-- **Gorgeous Glassmorphism Interface**: A sleek, dark-themed Windows 11 style UI crafted with modern CSS.
-- **Dynamic Format Analyzer**: Fetches all available MP4 resolutions (4K, 1080p, 720p) and MP3 bitrates (320kbps, 192kbps, 128kbps) instantly.
-- **Native OS Integration**: Features a native Microsoft Windows folder explorer for setting download paths via PyWebView.
-- **Chapter Splitting**: Built-in support to auto-split massive albums or podcasts into designated MP3/MP4 tracks using FFmpeg metadata.
-- **Single Executable Deployment**: Ships with an automated `build.bat` script that parses local assets into a distributable, standalone `.exe`.
+- **🎨 Glassmorphism Interface** — Sleek dark theme with platform-aware accents (purple for YouTube, gradient for Instagram)
+- **📹 YouTube Downloads** — MP4 video (4K/1080p/720p/480p) and MP3 audio (128-320kbps)
+- **📸 Instagram Downloads** — Public reels and posts with one-click download
+- **📂 Custom Save Location** — Native Windows folder picker via PyWebView
+- **🎵 Chapter Splitting** — Auto-split albums/podcasts into individual tracks
+- **🔧 Bundled FFmpeg** — No external dependencies needed on the target machine
+- **📦 Professional Installer** — Inno Setup 7 installer with Start Menu, Desktop shortcut, and uninstaller
 
 ## 🚀 Getting Started
 
-### Prerequisites
-Make sure you have **Python 3.10+** installed along with **FFmpeg** configured on your system PATH for audio generation. 
+### For Users (Just Want the App)
 
-### Local Development Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Shreyas445/Media-Downloader-Pro.git
-   cd Media-Downloader-Pro
-   ```
+1. Download `MediaDownloaderPro_v2.0.0_Setup.exe` from the [Releases](https://github.com/Shreyas445/Media-Downloader-Pro/releases) page
+2. Run the installer — no admin rights required
+3. Find "Media Downloader Pro" in your Start Menu
 
-2. Install dependencies:
-   ```bash
-   pip install pywebview yt-dlp pillow pyinstaller==5.13.2
-   ```
+### For Developers
 
-3. Run locally:
-   ```bash
-   python main.py
-   ```
+#### Prerequisites
+- **Python 3.10+**
+- **Inno Setup 7** (for building the installer)
 
-### 📦 Compiling to `.exe`
+#### Local Development
+```bash
+git clone https://github.com/Shreyas445/Media-Downloader-Pro.git
+cd Media-Downloader-Pro
+pip install pywebview yt-dlp pillow
+python main.py
+```
 
-Media Downloader Pro includes a fully automated build script. Simply run:
+#### Building the Installer
 ```cmd
 build.bat
 ```
-This bat file will:
-1. Dynamically read testing formats and package dependencies.
-2. Render `icon.png` into a native `.ico` embedded logo.
-3. Use PyInstaller (`--noconsole` and `--onefile`) to compress everything into a single transportable executable inside the `/dist/` folder!
+This automated script will:
+1. Install all Python dependencies
+2. Download FFmpeg binaries (if not already present)
+3. Generate the app icon from `icon.png`
+4. Compile the app with PyInstaller (onedir mode)
+5. Package everything into a professional Windows installer using Inno Setup 7
+
+The final installer will be at: `dist/installer/MediaDownloaderPro_v2.0.0_Setup.exe`
+
+## 📁 Project Structure
+
+```
+Media Downloader Pro/
+├── main.py                 # Backend — YouTube + Instagram download logic
+├── ui/
+│   ├── index.html          # Multi-platform UI layout
+│   ├── app.js              # Frontend logic with platform detection
+│   └── style.css           # Glassmorphism theme with platform-aware colors
+├── installer/
+│   └── setup.iss           # Inno Setup 7 installer script
+├── tools/
+│   └── ffmpeg/             # Bundled FFmpeg binaries (auto-downloaded)
+├── build.bat               # Full build pipeline
+├── icon.png                # Source app icon
+└── README.md
+```
+
+## 🛡️ How It Works
+
+The app uses `yt-dlp` (a powerful media extraction library) as its backend engine, with `FFmpeg` for audio conversion and video muxing. The UI is built with PyWebView, which renders a native web-based interface without requiring a browser.
+
+**Key design decision**: FFmpeg is bundled alongside the app so end users don't need to install anything separately. The build script automatically downloads FFmpeg and the Inno Setup installer packages everything into a single setup executable.
 
 ---
-*Created and optimized for high-quality UI/UX Desktop experiences.*
+*Built with ❤ by AntiGravity*

@@ -20,6 +20,9 @@ downloads/
 # Generated Windows Icons (The source icon.png is tracked, but icon.ico is generated)
 icon.ico
 
+# Bundled tools (downloaded during build)
+tools/ffmpeg/
+
 # IDEs
 .vscode/
 .idea/
