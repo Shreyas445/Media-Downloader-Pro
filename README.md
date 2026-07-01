@@ -82,5 +82,3 @@ The app uses `yt-dlp` (a powerful media extraction library) as its backend engin
 
 **Key design decision**: FFmpeg is bundled alongside the app so end users don't need to install anything separately. The build script automatically downloads FFmpeg and the Inno Setup installer packages everything into a single setup executable.
 
----
-*Built with ❤ by AntiGravity*
